@@ -2,7 +2,6 @@
   <div>
     <a
       class="text-blueGray-500 py-1 px-3"
-      href="#pablo"
       ref="btnDropdownRef"
       v-on:click="toggleDropdown($event)"
     >
@@ -18,21 +17,17 @@
     >
       <a
         href="javascript:void(0);"
+        v-on:click="viewElement"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
-        Action
+        Edit Company
       </a>
       <a
         href="javascript:void(0);"
+        v-on:click="deleteElement"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
-        Another action
-      </a>
-      <a
-        href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Something else here
+        Delete Company
       </a>
     </div>
   </div>
@@ -41,12 +36,25 @@
 import { createPopper } from "@popperjs/core";
 
 export default {
+  props: {
+    element: Object,
+    delete: { type: Function },
+    view: { type: Function },
+  },
   data() {
     return {
       dropdownPopoverShow: false,
     };
   },
   methods: {
+    deleteElement() {
+      this.delete(this.element)
+      this.dropdownPopoverShow = false;
+    },
+    viewElement() {
+      this.view(this.element)
+      this.dropdownPopoverShow = false;
+    },
     toggleDropdown: function (event) {
       event.preventDefault();
       if (this.dropdownPopoverShow) {
