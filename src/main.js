@@ -25,7 +25,7 @@ import axios from 'axios';
 const routes = [
   {
     path: "/admin",
-    redirect: "/admin/tables",
+    redirect: "/admin/companies",
     component: Admin,
     children: [
       {
@@ -37,7 +37,7 @@ const routes = [
   {
     path: "/",
     component: Auth,
-    redirect: "/auth/login",
+    redirect: "/admin/companies",
     children: [
       {
         path: "/auth/login",

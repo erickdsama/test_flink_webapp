@@ -241,7 +241,7 @@ export default {
   data() {
     let companies = [];
     let pages = 1;
-    let baseUrl = "http://0.0.0.0:8090/company/"
+    let baseUrl = "https://test.petwarn.me/company/"
     let companySelected = null;
     let editMode = false;
     let showModal = false;
@@ -294,7 +294,7 @@ export default {
     async deleteCompany(company) {
       try {
         await axios.delete(
-            `http://0.0.0.0:8090/company/${company.uuid}/`
+            `https://test.petwarn.me/company/${company.uuid}/`
         );
         await this.getData();
         // JSON responses are automatically parsed.
@@ -311,7 +311,7 @@ export default {
     async addCompany(companyData) {
       try {
         await axios.post(
-            "http://0.0.0.0:8090/company/",
+            "https://test.petwarn.me/company/",
             companyData
         );
         this.getData();
@@ -324,7 +324,7 @@ export default {
     async editCompany(companyData) {
       try {
         await axios.put(
-            `http://0.0.0.0:8090/company/${companyData.uuid}/`,
+            `https://test.petwarn.me/company/${companyData.uuid}/`,
             companyData
         );
         this.getData();
@@ -337,7 +337,7 @@ export default {
     async getCompany(companyId) {
       try {
         const response = await axios.get(
-            `http://0.0.0.0:8090/company/${companyId}/`
+            `https://test.petwarn.me/company/${companyId}/`
         );
         // JSON responses are automatically parsed.
         this.companies = response.data.results;
